@@ -29,13 +29,16 @@ Usage
 -----
 
 ```js
-server.register(require("hapi-plugin-header"), {
-    "Server": "Example/1.2.3",
-    "X-Request-Id": (server, request, reply) => request.id,
-    "X-External-IP": (server, request, reply) =>
-        require("request-promise")
-            .get("http://myexternalip.com/raw").then((value) =>
-                value.replace(/\r?\n/g, ""))
+server.register({
+    register: require("hapi-plugin-header"),
+    options: {
+        "Server": "Example/1.2.3",
+        "X-Request-Id": (server, request, reply) => request.id,
+        "X-External-IP": (server, request, reply) =>
+            require("request-promise")
+                .get("http://myexternalip.com/raw").then((value) =>
+                    value.replace(/\r?\n/g, ""))
+    }
 })
 ```
 
