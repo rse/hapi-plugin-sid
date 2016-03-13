@@ -26,9 +26,9 @@
 var Package = require("./package.json")
 
 /*  the HAPI plugin register function  */
-var register = function (server, options, next) {
+var register = (server, options, next) => {
     /*  helper function for setting a particular header  */
-    const setHeader = (request, name, value) => {
+    var setHeader = (request, name, value) => {
         value = value.replace(/\r?\n$/, "")
         if (request.response && request.response.header)
             request.response.header(name, value)
@@ -39,12 +39,12 @@ var register = function (server, options, next) {
     /*  hook into the request processing  */
     server.ext("onPreResponse", (request, reply) => {
         /*  start with a resolvd promise  */
-        let promise = Promise.resolve()
+        var promise = Promise.resolve()
         console.log(request.id)
 
         /*  iterate over all custom headers  */
         Object.keys(options).forEach((name) => {
-            let value = options[name]
+            var value = options[name]
             if (typeof value === "function")
                 value = value.call(null, server, request, reply)
             if (typeof value.then === "function") {
