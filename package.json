@@ -1,6 +1,6 @@
 {
     "name":        "hapi-plugin-header",
-    "version":     "0.9.0",
+    "version":     "0.9.1",
     "description": "HAPI plugin for always sending custom HTTP header",
     "keywords":    [ "hapi", "plugin", "http", "header" ],
     "main":        "./hapi-plugin-header.js",
