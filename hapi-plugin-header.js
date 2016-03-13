@@ -40,7 +40,6 @@ var register = (server, options, next) => {
     server.ext("onPreResponse", (request, reply) => {
         /*  start with a resolvd promise  */
         var promise = Promise.resolve()
-        console.log(request.id)
 
         /*  iterate over all custom headers  */
         Object.keys(options).forEach((name) => {
