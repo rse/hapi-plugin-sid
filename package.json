@@ -1,0 +1,24 @@
+{
+    "name":        "hapi-plugin-header",
+    "version":     "0.9.0",
+    "description": "HAPI plugin for always sending custom HTTP header",
+    "keywords":    [ "hapi", "plugin", "http", "header" ],
+    "main":        "./hapi-plugin-header.js",
+    "license":     "MIT",
+    "repository": {
+        "type": "git",
+        "url":  "https://github.com/rse/hapi-plugin-header.git"
+    },
+    "author": {
+        "name":  "Ralf S. Engelschall",
+        "email": "rse@engelschall.com",
+        "url":   "http://engelschall.com"
+    },
+    "homepage": "https://github.com/rse/hapi-plugin-header",
+    "bugs":     "https://github.com/rse/hapi-plugin-header/issues",
+    "dependencies": {
+    },
+    "engines": {
+        "node":        ">=4.0.0"
+    }
+}
