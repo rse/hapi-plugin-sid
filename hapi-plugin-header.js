@@ -43,8 +43,8 @@ const register = async (server, options) => {
             let name = names[i]
             let value = options[name]
             if (typeof value === "function")
-                value = value.call(null, server, request, h)
-            if (typeof value == "object" && typeof value.then === "function")
+                value = value(server, request, h)
+            if (typeof value === "object" && typeof value.then === "function")
                 value = await value
             setHeader(request, name, value)
         }
