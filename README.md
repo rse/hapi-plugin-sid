@@ -29,15 +29,15 @@ Usage
 -----
 
 ```js
-server.register({
-    register: require("hapi-plugin-header"),
+await server.register({
+    plugin: require("hapi-plugin-header"),
     options: {
-        "Server": "Example/1.2.3",
-        "X-Request-Id": (server, request, reply) => request.id,
-        "X-External-IP": (server, request, reply) =>
-            require("request-promise")
-                .get("http://myexternalip.com/raw").then((value) =>
-                    value.replace(/\r?\n/g, ""))
+        "Server":        "Example/1.2.3",
+        "X-Request-Id":  (server, request, h) => request.info.id,
+        "X-External-IP": (server, request, h) => {
+            return Request.get("http://myexternalip.com/raw")
+                .then((value) => value.replace(/\r?\n/g, ""))
+        }
     }
 })
 ```

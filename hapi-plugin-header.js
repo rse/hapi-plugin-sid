@@ -23,10 +23,10 @@
 */
 
 /*  internal dependencies  */
-var Package = require("./package.json")
+const pkg = require("./package.json")
 
 /*  the HAPI plugin register function  */
-var register = (server, options, next) => {
+const register = (server, options) => {
     /*  helper function for setting a particular header  */
     var setHeader = (request, name, value) => {
         value = value.replace(/\r?\n$/, "")
@@ -37,42 +37,26 @@ var register = (server, options, next) => {
     }
 
     /*  hook into the request processing  */
-    server.ext("onPreResponse", (request, reply) => {
-        /*  start with a resolvd promise  */
-        var promise = Promise.resolve()
-
-        /*  iterate over all custom headers  */
-        Object.keys(options).forEach((name) => {
-            var value = options[name]
+    server.ext("onPreResponse", async (request, h) => {
+        let names = Object.keys(options)
+        for (let i = 0; i < names.length; i++) {
+            let name = names[i]
+            let value = options[name]
             if (typeof value === "function")
-                value = value.call(null, server, request, reply)
-            if (typeof value.then === "function") {
-                /*  case 1: asynchronous value availability  */
-                promise = promise.then(() => {
-                    return value.then((value) => {
-                        setHeader(request, name, value)
-                    })
-                })
-            }
-            else {
-                /*  case 2: synchronous value availability  */
-                setHeader(request, name, value)
-            }
-        })
-
-        /*  finish once the promise chain finished  */
-        promise.then(() => {
-            reply.continue()
-        })
+                value = value.call(null, server, request, h)
+            if (typeof value == "object" && typeof value.then === "function")
+                value = await value
+            setHeader(request, name, value)
+        }
+        return h.continue
     })
-
-    /*  continue processing  */
-    next()
 }
 
-/*  provide meta-information as expected by HAPI  */
-register.attributes = { pkg: Package }
-
 /*  export register function, wrapped in a plugin object  */
-module.exports = { register: register }
+module.exports = {
+    plugin: {
+        register: register,
+        pkg:      pkg
+    }
+}
 

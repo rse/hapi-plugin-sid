@@ -16,9 +16,20 @@
     },
     "homepage": "https://github.com/rse/hapi-plugin-header",
     "bugs":     "https://github.com/rse/hapi-plugin-header/issues",
+    "peerDependencies": {
+        "hapi":        ">=17.0.0"
+    },
     "dependencies": {
     },
+    "devDependencies": {
+        "hapi":            "17.2.3",
+        "request":         "2.85.0",
+        "request-promise": "4.2.2"
+    },
     "engines": {
-        "node":        ">=4.0.0"
+        "node":        ">=8.0.0"
+    },
+    "scripts": {
+        "test":        "node test.js"
     }
 }
