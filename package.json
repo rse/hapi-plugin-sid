@@ -1,42 +1,46 @@
 {
-    "name":        "hapi-plugin-header",
-    "version":     "1.0.10",
+    "name": "hapi-plugin-header",
+    "version": "1.0.10",
     "description": "HAPI plugin for always sending custom HTTP header",
-    "keywords":    [ "hapi", "plugin", "http", "header" ],
-    "main":        "./hapi-plugin-header.js",
-    "license":     "MIT",
+    "keywords": [
+        "hapi",
+        "plugin",
+        "http",
+        "header"
+    ],
+    "main": "./hapi-plugin-header.js",
+    "license": "MIT",
     "repository": {
         "type": "git",
-        "url":  "https://github.com/rse/hapi-plugin-header.git"
+        "url": "https://github.com/rse/hapi-plugin-header.git"
     },
     "author": {
-        "name":  "Ralf S. Engelschall",
+        "name": "Ralf S. Engelschall",
         "email": "rse@engelschall.com",
-        "url":   "http://engelschall.com"
+        "url": "http://engelschall.com"
     },
     "homepage": "https://github.com/rse/hapi-plugin-header",
-    "bugs":     "https://github.com/rse/hapi-plugin-header/issues",
+    "bugs": "https://github.com/rse/hapi-plugin-header/issues",
     "peerDependencies": {
-        "hapi":                    ">=17.0.0"
+        "@hapi/hapi": ">=18.3.1"
     },
-    "dependencies": {
-    },
+    "dependencies": {},
     "devDependencies": {
-        "hapi":                    "17.8.1",
-        "request":                 "2.88.0",
-        "request-promise":         "4.2.2",
-        "eslint":                  "5.11.0",
-        "eslint-config-standard":  "12.0.0",
-        "eslint-plugin-standard":  "4.0.0",
-        "eslint-plugin-promise":   "4.0.1",
-        "eslint-plugin-import":    "2.14.0",
-        "eslint-plugin-node":      "8.0.0"
+        "@hapi/hapi": "18.x.x",
+        "request": "2.88.0",
+        "request-promise": "4.2.4",
+        "eslint": "5.16.0",
+        "eslint-config-standard": "12.0.0",
+        "eslint-plugin-standard": "4.0.0",
+        "eslint-plugin-promise": "4.1.1",
+        "eslint-plugin-import": "2.17.3",
+        "eslint-plugin-node": "9.1.0"
     },
     "engines": {
-        "node":                    ">=8.0.0"
+        "node": ">=8.0.0"
     },
     "scripts": {
-        "prepublishOnly":  "eslint --config eslint.yaml hapi-plugin-header.js",
-        "test":            "node test.js"
+        "prepublishOnly": "eslint --config eslint.yaml hapi-plugin-header.js",
+        "test": "node test.js"
     }
 }
