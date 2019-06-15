@@ -1,5 +1,5 @@
 
-const HAPI       = require("hapi")
+const HAPI       = require("@hapi/hapi")
 const HAPIHeader = require("./hapi-plugin-header")
 const Request    = require("request-promise")
 
