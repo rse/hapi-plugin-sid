@@ -44,9 +44,16 @@ const register = async (server, options) => {
             let value = options[name]
             if (typeof value === "function")
                 value = value(server, request, h)
-            if (typeof value === "object" && typeof value.then === "function")
+            if (
+                typeof value === "object"
+                && value != null
+                && typeof value.then === "function"
+            ) {
                 value = await value
-            setHeader(request, name, value)
+            }
+            if (typeof value === "string") {
+                setHeader(request, name, value)
+            }
         }
         return h.continue
     })
