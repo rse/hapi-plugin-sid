@@ -38,9 +38,9 @@ const register = async (server, options) => {
 
     /*  hook into the request processing  */
     server.ext("onPreResponse", async (request, h) => {
-        let names = Object.keys(options)
+        const names = Object.keys(options)
         for (let i = 0; i < names.length; i++) {
-            let name = names[i]
+            const name = names[i]
             let value = options[name]
             if (typeof value === "function")
                 value = value(server, request, h)
