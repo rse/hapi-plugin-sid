@@ -28,7 +28,7 @@ const pkg = require("./package.json")
 /*  the HAPI plugin register function  */
 const register = async (server, options) => {
     /*  helper function for setting a particular header  */
-    var setHeader = (request, name, value) => {
+    const setHeader = (request, name, value) => {
         value = value.replace(/\r?\n$/, "")
         if (request.response && request.response.header)
             request.response.header(name, value)
