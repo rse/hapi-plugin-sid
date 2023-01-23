@@ -22,5 +22,15 @@
 **  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-/*  currently nothing to declare, but requires to make TypeScript happy  */
+import { Plugin, Server, Request, ResponseToolkit } from "@hapi/hapi"
+
+declare namespace HAPIPluginHeader {
+    interface OptionalRegistrationOptions {
+        [ name: string ]: string | ((server: Server, req: Request, h: ResponseToolkit) => string) | Promise<string>
+    }
+}
+
+declare const HAPIPluginHeader: Plugin<HAPIPluginHeader.OptionalRegistrationOptions>
+
+export = HAPIPluginHeader
 
