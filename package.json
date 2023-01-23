@@ -4,6 +4,7 @@
     "description": "HAPI plugin for always sending custom HTTP header",
     "keywords":    [ "hapi", "plugin", "http", "header" ],
     "main":        "./hapi-plugin-header.js",
+    "types":       "./hapi-plugin-header.d.ts",
     "license":     "MIT",
     "repository": {
         "type": "git",
