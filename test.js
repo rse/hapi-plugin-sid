@@ -18,7 +18,13 @@ const Request    = require("request-promise")
             "X-External-IP": (server, request, h) => {
                 return Request.get("http://myexternalip.com/raw")
                     .then((value) => value.replace(/\r?\n/g, ""))
-            }
+            },
+            "X-Null": null,
+            "X-Undefined": undefined,
+            "X-Null-Function": () => null,
+            "X-Undefined-Function": () => undefined,
+            "X-Null-Promise": async () => null,
+            "X-Undefined-Promise": async () => undefined,
         }
     })
 
